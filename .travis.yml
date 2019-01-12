@@ -1,0 +1,15 @@
+os: linux
+dist: xenial
+language: go
+go:
+- 1.11.x
+
+install: true
+
+script:
+# Fail if a .go file hasn't been formatted with gofmt
+- test -z $(gofmt -s -l $(find . -iname '*.go' -type f ))
+- make
+
+notifications:
+  email: false
